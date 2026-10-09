@@ -15,3 +15,10 @@ export function analyze(text, rules = rulePack) {
 export function visibleFindings(findings, proEnabled = false) {
   return findings.filter((finding) => finding.tier === 'free' || (proEnabled && finding.tier === 'pro'));
 }
+
+/** Summarize distinct rule IDs in their first-seen order. */
+export function summarizeFindings(findings) {
+  const ids = [...new Set(findings.map((finding) => finding.id))];
+  if (!ids.length) return 'No red flags found in this selection.';
+  return `${ids.length} red flag${ids.length === 1 ? '' : 's'} found: ${ids.join(', ')}`;
+}

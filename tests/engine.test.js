@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { analyze, MAX_TEXT_LENGTH, visibleFindings } from '../extension/engine/index.js';
+import { analyze, MAX_TEXT_LENGTH, summarizeFindings, visibleFindings } from '../extension/engine/index.js';
 import { rulePack } from '../extension/engine/rules.js';
 import { createDemoKey, isValidLicense } from '../extension/engine/license.js';
 
@@ -13,6 +13,19 @@ const cases = [
   ['job-upfront-fee', ['Job offer: pay for your equipment', 'Work from home. Registration fee required', 'Stellenangebot: Startgebühr erforderlich'], ['Job offer: no experience required', 'Training is available for everyone']],
   ['crypto-guarantee', ['Crypto investment with guaranteed returns', 'Bitcoin is risk-free', 'Krypto: garantierte Rendite'], ['Crypto prices can fall', 'Guaranteed delivery of your books']],
 ];
+
+describe('finding summaries', () => {
+  it('summarizes empty findings', () => {
+    expect(summarizeFindings([])).toBe('No red flags found in this selection.');
+  });
+  it('summarizes one finding', () => {
+    expect(summarizeFindings(analyze('Act now'))).toBe('1 red flag found: urgency');
+  });
+  it('counts distinct IDs and preserves their first-seen order', () => {
+    const findings = ['urgency', 'lookalike-domain', 'lookalike-domain', 'risky-payment', 'urgency'].map((id) => ({ id }));
+    expect(summarizeFindings(findings)).toBe('3 red flags found: urgency, lookalike-domain, risky-payment');
+  });
+});
 
 describe.each(cases)('%s', (id, positives, negatives) => {
   it.each(positives)('detects %s', (text) => {

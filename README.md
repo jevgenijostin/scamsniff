@@ -9,6 +9,7 @@ Detection runs entirely on your device. There is no backend, telemetry, remote m
 1. Open `chrome://extensions` or `edge://extensions`.
 2. Enable **Developer mode**, click **Load unpacked**, and select `C:\Dev\personal\scamsniff\extension` (the **extension** directory, not the project root).
 3. Pin ScamSniff, open a regular website, optionally select some text, open the popup, and click **Check this page**.
+   Alternatively, right-click selected text and choose **Check selection for ScamSniff** to show a local notification with a summary of all detected rule IDs.
 4. After editing files, reload the extension on the extensions page and refresh the target tab.
 
 There is no build step and npm is not required to load the extension. To develop and run tests, use Node 22.12+:
@@ -44,15 +45,17 @@ Unlocking or removing a key immediately re-filters any current results. Invalid 
 ## Privacy and permissions
 
 - `activeTab` grants temporary access when you invoke the extension; there are no permanent host permissions or always-on page scanners.
-- `scripting` injects an idempotent content script into the active tab's top frame. A message requests the current selection or `document.body.innerText` on demand.
-- `storage` persists the demo license locally. Page text and results are never persisted and disappear when the popup closes.
+- `scripting` injects an idempotent content script into the active tab's top frame for popup checks or the clicked frame for context-menu checks. A message requests the current selection or `document.body.innerText` on demand.
+- `storage` persists the demo license locally. Page text and results are never written to extension storage.
+- `contextMenus` adds **Check selection for ScamSniff** when text is selected. A module service worker runs the same local engine against only that selection.
+- `notifications` displays the selection summary, including all rule tiers. Notifications may remain in the system notification center until dismissed.
 - All scripts and styles ship with the extension. The popup's content security policy includes `connect-src 'none'`. There are no fetch, analytics, remote assets, or external service calls in extension code.
 
 Package installation and GitHub Actions use the network for development dependencies; neither is part of the installed extension. Chrome/Edge itself and the websites you visit have their own network behavior.
 
 ## Limitations and manual checks
 
-This MVP uses the popup's explicit check action, with selection taking priority. It does not scan automatically on selection changes, add a context menu, or run a background service worker. It reads rendered top-frame text, not link destinations, cross-origin frames, images/OCR, shadow-root contents, or form field values. `innerText` omits ordinary hidden content but is not a pixel-visibility detector. Browser-internal pages, extension stores, and built-in PDF viewers are restricted; local files need the browser's file-access toggle.
+Use the popup's explicit check action, with selection taking priority, or the selection-only context-menu entry. Checks do not run automatically on selection changes. The popup reads rendered top-frame text, not link destinations, cross-origin frames, images/OCR, shadow-root contents, or form field values. `innerText` omits ordinary hidden content but is not a pixel-visibility detector. Context-menu checks preserve the clicked selection if it changes or content-script injection fails. Browser-internal pages, extension stores, and built-in PDF viewers restrict injection; local files need the browser's file-access toggle.
 
 Domain matching is a small spelling/confusable heuristic, not a reputation database, full Unicode confusable analysis, or punycode decoder. Warnings may flag benign examples or negated statements. Rules do not establish intent or exhaustively understand either language.
 
@@ -63,6 +66,7 @@ The Node suite tests positive/negative examples for all eight rules, mixed langu
 3. Scan `My love, send me money`; free mode hides the Pro finding. Enter the demo key and confirm it appears without rescanning; remove the key and confirm it disappears.
 4. Reopen the popup to verify license persistence; try an invalid key and a restricted browser page.
 5. Select an HTML-looking payload and confirm it displays as text, not executable markup.
+6. Right-click selected text containing `Act now, pay via gift card at paypaI.com`, choose **Check selection for ScamSniff**, and confirm a notification lists three red flags. Repeat with harmless text and expect no red flags; surrounding page text must not affect the result.
 
 ## Monetization
 

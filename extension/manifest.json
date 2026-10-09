@@ -3,7 +3,8 @@
   "name": "ScamSniff",
   "version": "0.1.0",
   "description": "Spot English and German scam red flags. Detection stays on your device.",
-  "permissions": ["activeTab", "scripting", "storage"],
+  "permissions": ["activeTab", "scripting", "storage", "contextMenus", "notifications"],
+  "background": {"service_worker": "background.js", "type": "module"},
   "icons": {
     "16": "icons/icon-16.png",
     "48": "icons/icon-48.png",
