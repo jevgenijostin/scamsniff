@@ -9,8 +9,9 @@ const combo = (left, right) => (text) => {
   const matches = text.matchAll(new RegExp(left.source, `${left.flags.replace(/[gy]/g, '')}g`));
   for (const a of matches) {
     const start = Math.max(0, a.index - 300);
-    const b = first(right, text.slice(start, a.index + a[0].length + 300));
-    if (b) {
+    // Match the whole signal before checking its start, so the window cannot truncate it.
+    const b = first(right, text.slice(start));
+    if (b && start + b.index <= a.index + a[0].length + 300) {
       const from = Math.min(a.index, start + b.index);
       const to = Math.max(a.index + a[0].length, start + b.index + b[0].length);
       return [{ index: from, snippet: text.slice(from, to) }];

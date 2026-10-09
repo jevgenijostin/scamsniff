@@ -35,6 +35,14 @@ describe('engine behavior', () => {
     expect(analyze('Dear Customer,\nplease send your password. Jetzt handeln!').map((f) => f.id)).toEqual(expect.arrayContaining(['urgency', 'generic-info-request']));
   });
   it('does not combine distant signals', () => expect(analyze(`Dear Customer ${'x'.repeat(700)} provide your password`)).toEqual([]));
+  it.each([299, 300, 301])('checks the right signal start at distance %i', (distance) => {
+    const text = `Pay${' '.repeat(distance)}gift card`;
+    expect(analyze(text).some((f) => f.id === 'risky-payment')).toBe(distance <= 300);
+  });
+  it.each([299, 300, 301])('checks the left signal start at distance %i', (distance) => {
+    const text = `gift card${' '.repeat(distance - 'gift card'.length)}Pay`;
+    expect(analyze(text).some((f) => f.id === 'risky-payment')).toBe(distance <= 300);
+  });
   it('finds a later relevant greeting', () => expect(analyze(`Dear Customer ${'x'.repeat(700)} Dear Customer, provide your password`).map((f) => f.id)).toContain('generic-info-request'));
   it('scans a large input and caps the work', () => {
     expect(analyze(`Act now ${'x'.repeat(1_000_000)}`).map((f) => f.id)).toContain('urgency');
