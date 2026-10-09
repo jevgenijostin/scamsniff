@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ScamSniff</title>
+  <link rel="stylesheet" href="../extension/popup.css">
+</head>
+<body>
+  <header><div class="brand">ScamSniff <span id="tier">FREE</span></div><p>A second look before you click.</p></header>
+  <main inert>
+    <div class="privacy">LOCAL ONLY · NO DATA SENT</div>
+    <button id="check" type="button">Check this page</button>
+    <p class="hint">Selected text takes priority. Select a message, then check.</p>
+    <p id="status" role="status" aria-live="polite">Selection checked. 3 red flags found.</p>
+    <div id="results"><h2>high · 2</h2>
+<article class="finding high"><p class="reason">Possible lookalike or mixed-script domain</p><blockquote><mark>paypaI.com</mark></blockquote></article>
+<article class="finding high"><p class="reason">Request involving a hard-to-reverse payment method</p><blockquote><mark>pay the delivery fee via gift card</mark></blockquote></article>
+<h2>medium · 1</h2>
+<article class="finding medium"><p class="reason">Pressure to act quickly</p><blockquote><mark>Jetzt handeln</mark></blockquote></article></div>
+    <p id="upsell"><a href="#license">Unlock Pro</a> for romance, job and crypto scam signals.</p>
+    <details id="license">
+      <summary>Pro license · local demo</summary>
+      <p>Already have a demo key? Unlock the extra rules on this device.</p>
+      <form id="license-form">
+        <label for="key">License key</label>
+        <input id="key" type="text" placeholder="SS-PRO-XXXXXXXX-XXXX" autocomplete="off" spellcheck="false" maxlength="32">
+        <div class="actions"><button type="submit">Unlock Pro</button><button id="remove" type="button" class="secondary">Remove key</button></div>
+      </form>
+      <p id="license-status" role="status"></p>
+    </details>
+  </main>
+  <footer>Signals, not a verdict. No findings does not mean safe.</footer>
+<p style="padding: 0 22px 16px; margin: 0; font-size: 11px; color: #626e69;">Static example render for documentation purposes - not an interactive page.</p>
+</body>
+</html>

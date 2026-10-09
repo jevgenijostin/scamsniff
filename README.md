@@ -4,6 +4,10 @@ ScamSniff is a Chrome/Edge Manifest V3 extension that gives suspicious messages 
 
 Detection runs entirely on your device. There is no backend, telemetry, remote model, payment request, or external network call in the extension. Findings are heuristic signals, not a determination that a message is fraudulent; no findings does not mean a page is safe.
 
+## Demo
+
+![ScamSniff popup example](demo/screenshot.png)
+
 ## Install for development
 
 1. Open `chrome://extensions` or `edge://extensions`.
