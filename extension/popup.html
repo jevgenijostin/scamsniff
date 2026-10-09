@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ScamSniff</title>
+  <link rel="stylesheet" href="popup.css">
+  <script type="module" src="popup.js"></script>
+</head>
+<body>
+  <header><div class="brand">ScamSniff <span id="tier">FREE</span></div><p>A second look before you click.</p></header>
+  <main>
+    <div class="privacy">LOCAL ONLY · NO DATA SENT</div>
+    <button id="check" type="button">Check this page</button>
+    <p class="hint">Selected text takes priority. Select a message, then check.</p>
+    <p id="status" role="status" aria-live="polite">Ready when you are.</p>
+    <div id="results"></div>
+    <p id="upsell" hidden><a href="#license">Unlock Pro</a> for romance, job and crypto scam signals.</p>
+    <details id="license">
+      <summary>Pro license · local demo</summary>
+      <p>Already have a demo key? Unlock the extra rules on this device.</p>
+      <form id="license-form">
+        <label for="key">License key</label>
+        <input id="key" type="text" placeholder="SS-PRO-XXXXXXXX-XXXX" autocomplete="off" spellcheck="false" maxlength="32">
+        <div class="actions"><button type="submit">Unlock Pro</button><button id="remove" type="button" class="secondary">Remove key</button></div>
+      </form>
+      <p id="license-status" role="status"></p>
+    </details>
+  </main>
+  <footer>Signals, not a verdict. No findings does not mean safe.</footer>
+</body>
+</html>

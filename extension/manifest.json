@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "ScamSniff",
+  "version": "0.1.0",
+  "description": "Spot English and German scam red flags. Detection stays on your device.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "action": { "default_popup": "popup.html", "default_title": "ScamSniff — check this page" },
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'"
+  }
+}

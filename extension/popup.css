@@ -1,0 +1,32 @@
+:root { color-scheme: light; font-family: system-ui, sans-serif; color: #172a2b; background: #f6f8f5; }
+* { box-sizing: border-box; }
+body { width: 380px; margin: 0; }
+header { padding: 24px 22px 18px; background: #153e38; color: #fff; }
+.brand { font-size: 25px; font-weight: 750; letter-spacing: -.8px; }
+#tier { font-size: 10px; letter-spacing: 1px; border: 1px solid #83b2a0; border-radius: 4px; padding: 3px 6px; vertical-align: middle; margin-left: 6px; }
+header p { margin: 7px 0 0; color: #c6ded2; font-size: 13px; }
+main { padding: 20px 22px; }
+.privacy { font-size: 10px; font-weight: 700; letter-spacing: 1.3px; color: #386655; margin-bottom: 12px; }
+button { border: 0; border-radius: 7px; background: #176b52; color: white; font: inherit; font-weight: 650; padding: 11px 14px; cursor: pointer; }
+#check { width: 100%; }
+button:hover { background: #11523e; }
+button:disabled { opacity: .6; cursor: wait; }
+button:focus-visible, a:focus-visible, summary:focus-visible, input:focus-visible { outline: 3px solid #b98b27; outline-offset: 3px; }
+.hint, details p, #upsell { font-size: 12px; line-height: 1.5; color: #536460; }
+#status { font-size: 13px; line-height: 1.5; }
+h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .8px; margin: 20px 0 9px; }
+.finding { border: 1px solid #dce3de; border-left: 3px solid #b67a20; background: white; border-radius: 6px; margin-bottom: 9px; padding: 12px; }
+.finding.high { border-left-color: #ae3d36; }
+.finding.low { border-left-color: #527a96; }
+.reason { margin: 0 0 8px; font-size: 13px; font-weight: 650; }
+blockquote { margin: 0; font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; white-space: pre-wrap; }
+mark { background: #fff0c6; color: #4b3912; }
+details { border-top: 1px solid #d5dfd8; margin-top: 20px; padding-top: 14px; }
+summary { font-size: 12px; cursor: pointer; }
+label { display: block; font-size: 12px; margin: 10px 0 6px; }
+input { width: 100%; padding: 10px; border: 1px solid #aebfb4; border-radius: 6px; background: white; }
+.actions { display: flex; gap: 8px; margin-top: 10px; font-size: 12px; }
+.secondary { background: #e2eae4; color: #244639; }
+.secondary:hover { background: #d1dfd5; }
+a { color: #176b52; }
+footer { padding: 0 22px 20px; font-size: 11px; line-height: 1.5; color: #626e69; }
