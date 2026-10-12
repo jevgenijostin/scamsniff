@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ScamSniff privacy policy: local scam checks, no data collection, no network calls, and no accounts.">
+  <title>ScamSniff — Privacy policy</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #172a2b; background: #f6f8f5; }
+    body { margin: 0; line-height: 1.65; }
+    header { background: #153e38; color: white; padding: 2rem max(1.5rem, calc((100% - 48rem) / 2)); }
+    header p { color: #c6ded2; margin: 0; }
+    h1 { margin: 0 0 .4rem; line-height: 1.2; }
+    main { max-width: 48rem; margin: auto; padding: 1rem 1.5rem 3rem; }
+    h2 { font-size: 1.25rem; margin-top: 2rem; }
+    dt { font-weight: 700; margin-top: 1rem; }
+    dd { margin: .25rem 0 0; }
+    a { color: #176b52; overflow-wrap: anywhere; }
+    a:focus-visible { outline: 3px solid #b98b27; outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <header><h1>ScamSniff privacy policy</h1><p>Scam checks stay on your device.</p></header>
+  <main>
+    <p>ScamSniff does not collect or transmit your data. The extension makes no network calls, uses no telemetry or analytics, and requires no account. There is no backend, remote model, or payment service in the extension.</p>
+    <h2>What happens when you check text</h2>
+    <p>When you explicitly run a check, ScamSniff processes your selected text or the current page's rendered text locally to look for English and German scam red flags. There is no always-on page scanner. Page text and scan results are never written to extension storage or sent to the developer or anyone else.</p>
+    <h2>Why these permissions are needed</h2>
+    <dl>
+      <dt>activeTab</dt><dd>Grants temporary access to the tab when you invoke ScamSniff, so it can check the text you requested. There are no permanent host permissions.</dd>
+      <dt>scripting</dt><dd>Injects a content script on demand to read the selection or rendered page text. Popup checks use the active tab's top frame; context-menu checks target the clicked frame.</dd>
+      <dt>storage</dt><dd>Saves only the optional demo license key in local browser extension storage, so the local demo unlock persists. It does not store page text or findings and does not sync the key to a server. You can remove the key in the popup.</dd>
+      <dt>contextMenus</dt><dd>Adds “Check selection for ScamSniff” to the right-click menu for selected text. This check analyzes only that selection on your device.</dd>
+      <dt>notifications</dt><dd>Shows a local summary of a selection check, including all rule tiers. Notifications may remain in your system notification center until you dismiss them.</dd>
+    </dl>
+    <h2>Local code and other services</h2>
+    <p>All scripts and styles ship with the extension. Its extension-page security policy includes <code>connect-src 'none'</code>; it contains no remote assets, analytics, or external service calls. The optional Pro license is a local demonstration, not a purchase or online activation.</p>
+    <p>Your browser, extension store, and websites you visit have their own network behavior and privacy policies. This policy describes the installed ScamSniff extension. Visiting this policy on GitHub Pages or contacting us through GitHub uses GitHub's services; those actions are separate from extension checks.</p>
+    <h2>Contact</h2>
+    <p>Report issues or questions at <a href="https://github.com/jevgenijostin/scamsniff/issues">github.com/jevgenijostin/scamsniff/issues</a>. Issues are public: please do not include sensitive messages or personal information.</p>
+  </main>
+</body>
+</html>

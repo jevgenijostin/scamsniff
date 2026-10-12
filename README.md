@@ -48,6 +48,8 @@ Unlocking or removing a key immediately re-filters any current results. Invalid 
 
 ## Privacy and permissions
 
+Read the standalone [privacy policy](https://jevgenijostin.github.io/scamsniff/store/privacy-policy.html). Store copy and upload instructions are in [store/listing.md](store/listing.md); `npm run package` creates ready-to-upload Chrome/Edge and Firefox ZIPs in `dist/` (Windows PowerShell, no dependency installation or build required).
+
 - `activeTab` grants temporary access when you invoke the extension; there are no permanent host permissions or always-on page scanners.
 - `scripting` injects an idempotent content script into the active tab's top frame for popup checks or the clicked frame for context-menu checks. A message requests the current selection or `document.body.innerText` on demand.
 - `storage` persists the demo license locally. Page text and results are never written to extension storage.
