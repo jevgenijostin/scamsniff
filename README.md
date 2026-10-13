@@ -74,10 +74,6 @@ The Node suite tests positive/negative examples for all eight rules, mixed langu
 5. Select an HTML-looking payload and confirm it displays as text, not executable markup.
 6. Right-click selected text containing `Act now, pay via gift card at paypaI.com`, choose **Check selection for ScamSniff**, and confirm a notification lists three red flags. Repeat with harmless text and expect no red flags; surrounding page text must not affect the result.
 
-## Monetization
-
-The plan is a free core plus a **one-time Pro unlock via a license key**, with **Lemon Squeezy or Gumroad** as the future payment processor. Payment processing, purchase flows, and real license verification are **not wired up**. Tonight's MVP only demonstrates deterministic local gating, with no payment backend or license API call. Any future purchase/activation integration must explicitly disclose its network use and keep core detection local; a signed offline entitlement could replace the demo checksum.
-
 ## License
 
 MIT. See [LICENSE](LICENSE).
